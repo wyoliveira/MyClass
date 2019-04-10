@@ -84,16 +84,16 @@ class TeacherRepository private constructor(context: Context) {
         return teacherEntity
     }
 
-    fun insert(name: String, email: String): Int {
+    fun insert(pTeacher: TeacherEntity) {
 
         try {
             val db = mScheduleDataBaseHelper.writableDatabase
             val insertValues = ContentValues()
 
-            insertValues.put(DataBaseConstants.TEACHER.COLUMNS.NAME, name)
-            insertValues.put(DataBaseConstants.TEACHER.COLUMNS.EMAIL, email)
+            insertValues.put(DataBaseConstants.TEACHER.COLUMNS.NAME, pTeacher.name)
+            insertValues.put(DataBaseConstants.TEACHER.COLUMNS.EMAIL, pTeacher.email)
 
-            return db.insert(DataBaseConstants.TEACHER.TABLE_NAME, null, insertValues).toInt()
+            db.insert(DataBaseConstants.TEACHER.TABLE_NAME, null, insertValues)
 
         } catch (e: Exception) {
             throw e
