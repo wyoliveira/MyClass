@@ -30,16 +30,17 @@ class TeacherRepository private constructor(context: Context) {
 
             val db = mScheduleDataBaseHelper.readableDatabase
 
-            cursor = db.rawQuery("SELECT * FROM ${DataBaseConstants.SCHEDULE.TABLE_NAME} " +
-                    "WHERE ${DataBaseConstants.SCHEDULE.COLUMNS.USERID} = $pUserId ", null)
+            cursor = db.rawQuery("SELECT * FROM ${DataBaseConstants.TEACHER.TABLE_NAME} " +
+                    "WHERE ${DataBaseConstants.TEACHER.COLUMNS.USERID} = $pUserId", null)
 
             if (cursor.count > 0) {
                 while (cursor.moveToNext()) {
                     val teacherId = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.TEACHER.COLUMNS.ID))
+                    val userId = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.TEACHER.COLUMNS.USERID))
                     val name = cursor.getString(cursor.getColumnIndex(DataBaseConstants.TEACHER.COLUMNS.NAME))
                     val email = cursor.getString(cursor.getColumnIndex(DataBaseConstants.TEACHER.COLUMNS.EMAIL))
 
-                    list.add(TeacherEntity(teacherId, name, email))
+                    list.add(TeacherEntity(teacherId, userId, name, email))
 
                 }
             }
@@ -61,6 +62,7 @@ class TeacherRepository private constructor(context: Context) {
             val db = mScheduleDataBaseHelper.readableDatabase
 
             val projection = arrayOf(DataBaseConstants.TEACHER.COLUMNS.ID,
+                    DataBaseConstants.TEACHER.COLUMNS.USERID,
                     DataBaseConstants.TEACHER.COLUMNS.NAME,
                     DataBaseConstants.TEACHER.COLUMNS.EMAIL)
             val selection = "${DataBaseConstants.TEACHER.COLUMNS.ID} = ?" //Esse é o WHERE, que faz o filtro
@@ -73,8 +75,8 @@ class TeacherRepository private constructor(context: Context) {
                 val teacherId = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.TEACHER.COLUMNS.ID))
                 val name = cursor.getString(cursor.getColumnIndex(DataBaseConstants.TEACHER.COLUMNS.NAME))
                 val email = cursor.getString(cursor.getColumnIndex(DataBaseConstants.TEACHER.COLUMNS.EMAIL))
-
-                teacherEntity = TeacherEntity(teacherId, name, email)
+                val userId = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.TEACHER.COLUMNS.USERID))
+                teacherEntity = TeacherEntity(teacherId, userId, name, email)
             }
             cursor.close()
 
@@ -90,6 +92,7 @@ class TeacherRepository private constructor(context: Context) {
             val db = mScheduleDataBaseHelper.writableDatabase
             val insertValues = ContentValues()
 
+            insertValues.put(DataBaseConstants.TEACHER.COLUMNS.USERID, pTeacher.userId)
             insertValues.put(DataBaseConstants.TEACHER.COLUMNS.NAME, pTeacher.name)
             insertValues.put(DataBaseConstants.TEACHER.COLUMNS.EMAIL, pTeacher.email)
 
@@ -109,6 +112,7 @@ class TeacherRepository private constructor(context: Context) {
             val updateValues = ContentValues()
 
             updateValues.put(DataBaseConstants.TEACHER.COLUMNS.ID, pTeacher.id)
+            updateValues.put(DataBaseConstants.TEACHER.COLUMNS.USERID, pTeacher.userId)
             updateValues.put(DataBaseConstants.TEACHER.COLUMNS.NAME, pTeacher.name)
             updateValues.put(DataBaseConstants.TEACHER.COLUMNS.EMAIL, pTeacher.email)
 

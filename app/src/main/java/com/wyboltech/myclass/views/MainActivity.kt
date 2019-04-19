@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.view.View
 import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.GravityCompat
 import android.support.v4.view.ViewPager
 import android.support.v4.widget.DrawerLayout
@@ -51,13 +49,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         floatButton.setOnClickListener(this)
 
         // Instantiate a ViewPager, a Calendar and a PagerAdapter.
-        mPager = findViewById(R.id.pager)
 
-        val pagerAdapter = ScreenSlidePageAdapter(supportFragmentManager)
-        mPager.adapter = pagerAdapter
-        val c: Calendar = Calendar.getInstance()
-        mPager.currentItem = (c.get(Calendar.DAY_OF_WEEK) - 2)
-        mPager.setPageTransformer(true, ZoomOutPageTransformer())
 
         //Variaveis que precisam de instancia
         mRoomBusiness = RoomBusiness(this)
@@ -66,9 +58,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         loadRoomDefault()
         loadCacheRooms()
+        startDefaultPageAdapter()
+    }
+
+    private fun getToday(): Int {
+        val c: Calendar = Calendar.getInstance()
+        return (c.get(Calendar.DAY_OF_WEEK) - 2)
+
     }
 
     // The pager adapter, which provides the pages to the view pager widget.
+    private fun startDefaultPageAdapter() {
+        mPager = findViewById(R.id.pager)
+        val pagerAdapter = ScreenSlidePageAdapter(supportFragmentManager)
+        mPager.adapter = pagerAdapter
+        mPager.currentItem = getToday()
+        mPager.setPageTransformer(true, ZoomOutPageTransformer())
+
+    }
 
     override fun onBackPressed() {
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
@@ -86,39 +93,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
 
         val id = item.itemId
-        val fragmentManager = supportFragmentManager
-        var fragment: Fragment? = null
 
         when (id) {
             R.id.nav_my_schedule -> {
 
             }
             R.id.nav_teacher -> {
-                fragment = TeacherListFragment.newInstance("a")
+                startActivity(Intent(this, TeacherListActivity::class.java))
             }
             R.id.nav_share -> {
 
@@ -129,14 +115,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
-        if (fragment != null) {
-            fragmentManager.beginTransaction().replace(R.id.frame_content, fragment).commit()
-        }
-
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
@@ -170,4 +153,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         RoomCacheConstants.setCache(mRoomBusiness.getList())
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }

@@ -48,10 +48,19 @@ class TeacherListFragment : Fragment() {
         mRecyclerTeacherList = rootView.findViewById(R.id.recyclerTeacherList)
         val teacherList = mTeacherBusiness.getList()
         // 2 Definir um adapter com os itens de listagem
-        mRecyclerTeacherList.adapter = TeacherListAdapter(teacherList)
+        //mRecyclerTeacherList.adapter = TeacherListAdapter(teacherList)
         // 3 Definir um layout
         mRecyclerTeacherList.layoutManager = LinearLayoutManager(mContext)
         return rootView
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadTeachers()
+    }
+
+    private fun loadTeachers() {
+        //mRecyclerTeacherList.adapter = TeacherListAdapter(mTeacherBusiness.getList(), m)
     }
 
 }
