@@ -22,7 +22,7 @@ class RoomBusiness (context: Context){
 
         var listMock = mutableListOf<RoomEntity>()
         try {
-            for (i in 1..5) {
+            for (i in 1..8) {
                 val roomMock = RoomEntity(i, "Sala $i")
                 if(mRoomRepository.get(i) != roomMock) {
                     mRoomRepository.insert(roomMock)

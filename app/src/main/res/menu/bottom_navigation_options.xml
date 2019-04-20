@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/btn_nav_my_schedule"
+            android:icon="@drawable/ic_schedule_24dp"
+            android:title="Meu horário" />
+
+
+        <item
+            android:id="@+id/bot_nav_back"
+            android:icon="@drawable/ic_arrow_back"
+            android:title="Anterior" />
+        <item
+            android:id="@+id/bot_nav_next"
+            android:icon="@drawable/ic_arrow_forward"
+            android:title="Seguinte" />
+    </group>
+
+</menu>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "534064281950",
+    "firebase_url": "https://suportmyclass.firebaseio.com",
+    "project_id": "suportmyclass",
+    "storage_bucket": "suportmyclass.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534064281950:android:b40a6ae7dd6a9cb9",
+        "android_client_info": {
+          "package_name": "com.wyboltech.myclass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534064281950-h79agslq91aef4amobs7dp14tut55vil.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wyboltech.myclass",
+            "certificate_hash": "4e594b1384bbf86714e12e9eb0f5ac7b49d2d550"
+          }
+        },
+        {
+          "client_id": "534064281950-h86an4rm9tlln2i8jujcjg1cluaevi7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_3-x-_LRqYsqq_oSrET0T8u-OmpNcQ-U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534064281950-h86an4rm9tlln2i8jujcjg1cluaevi7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

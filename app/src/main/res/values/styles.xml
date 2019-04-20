@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="mBackgroundTimeSchedule" parent ="@style/Theme.AppCompat">
+        <item name= "android:textColor">@color/colorWhite</item>
+        <item name = "android:textSize">14sp</item>
+        <item name = "android:background">@drawable/round_backgroud_shape</item>
+        <item name= "android:padding">6dp</item>
+    </style>
+    <style name="mBackgroundDayWeekButtonSelected" parent ="@style/Theme.AppCompat">
+        <item name= "android:textColor">@color/colorWhite</item>
+        <item name = "android:textSize">16sp</item>
+        <item name = "android:background">@drawable/round_backgroud_shape</item>
+        <item name= "android:paddingTop">6dp</item>
+        <item name= "android:paddingBottom">6dp</item>
+        <item name= "android:paddingLeft">2dp</item>
+        <item name= "android:paddingRight">6dp</item>
+    </style>
+    <style name="mBackgroundDayWeekButtonUnselected" parent ="@style/Theme.AppCompat">
+        <item name= "android:textColor">@color/colorBlackToGray</item>
+        <item name = "android:textSize">16sp</item>
+        <item name = "android:background">@drawable/round_background_week_day_unselected</item>
+        <item name= "android:paddingTop">6dp</item>
+        <item name= "android:paddingBottom">6dp</item>
+        <item name= "android:paddingLeft">2dp</item>
+        <item name= "android:paddingRight">6dp</item>
+    </style>
+    <style name="mDefaultTableSchedule" parent ="@style/Theme.AppCompat">
+        <item name = "android:background">@drawable/round_background_schedule_table</item>
+    </style>
+    <style name="mDefaultTableTeacher" parent ="@style/Theme.AppCompat">
+        <item name = "android:background">@drawable/round_background_teacher_table</item>
+    </style>
+
+
+</resources>

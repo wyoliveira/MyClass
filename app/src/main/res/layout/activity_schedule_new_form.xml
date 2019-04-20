@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".views.ScheduleNewFormActivity">
+
+    <EditText
+        android:id="@+id/edit_subject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="Disciplina"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_teacher"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="Professor"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_subject"
+        tools:layout_editor_absoluteY="97dp" />
+
+    <TextView
+        android:id="@+id/text_select_weekday_below"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:text="@string/selecione_dia_da_semana"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_teacher" />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radio_button_group_day_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        app:layout_constraintTop_toBottomOf="@id/text_select_weekday_below">
+
+        <TextView
+            android:id="@+id/bt_radio_segunda"
+            style="@style/mBackgroundDayWeekButtonUnselected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="Seg"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/bt_radio_terca"
+            style="@style/mBackgroundDayWeekButtonUnselected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="Ter"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/bt_radio_quarta"
+            style="@style/mBackgroundDayWeekButtonUnselected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="Qua"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/bt_radio_quinta"
+            style="@style/mBackgroundDayWeekButtonUnselected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="Qui"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/bt_radio_sexta"
+            style="@style/mBackgroundDayWeekButtonUnselected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="Sex"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/bt_radio_sabado"
+            style="@style/mBackgroundDayWeekButtonUnselected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="Sáb"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp" />
+    </RadioGroup>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineScheduleFormRightVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineScheduleFormLeftVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineScheduleFormHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <TextView
+        android:id="@+id/text_select_initial_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/inicio_da_aula"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_button_group_day_week"
+        android:layout_marginStart="65dp" />
+
+
+    <TextView
+        android:id="@+id/text_select_final_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/final_da_aula"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_select_initial_time"
+        android:layout_marginStart="65dp" />
+
+    <TextView
+        android:id="@+id/edit_select_final_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:paddingLeft="16dp"
+        android:text="--:--"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineScheduleFormRightVertical"
+        app:layout_constraintTop_toBottomOf="@id/text_select_initial_time" />
+
+    <TextView
+        android:id="@+id/edit_select_initial_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingLeft="16dp"
+        android:text="--:--"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineScheduleFormRightVertical"
+        app:layout_constraintTop_toBottomOf="@id/radio_button_group_day_week" />
+
+    <ImageView
+        android:id="@+id/img_btn_initTime"
+        style="@style/mBackgroundTimeSchedule"
+        android:layout_width="72dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_button_group_day_week"
+        app:srcCompat="@drawable/ic_time_selector"
+        android:layout_marginEnd="36dp" />
+
+    <ImageView
+        android:id="@+id/img_btn_finTime"
+        style="@style/mBackgroundTimeSchedule"
+        android:layout_width="72dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_btn_initTime"
+        app:srcCompat="@drawable/ic_time_selector"
+        android:layout_marginEnd="36dp" />
+
+    <TextView
+        android:id="@+id/description_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingLeft="16dp"
+        android:text="@string/selecione_sala_de_aula"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_btn_finTime"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerRomm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_room" />
+
+    <Button
+        android:id="@+id/btn_save_schedule_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:text="@string/salvar"
+        app:layout_constraintStart_toEndOf="@id/guidelineScheduleFormRightVertical"
+        app:layout_constraintTop_toBottomOf="@id/spinnerRomm"/>
+
+    <Button
+        android:id="@+id/btn_cancel_schedule_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:text="@string/cancelar"
+        app:layout_constraintStart_toEndOf="@id/guidelineScheduleFormLeftVertical"
+        app:layout_constraintTop_toBottomOf="@id/spinnerRomm"
+         />
+
+</android.support.constraint.ConstraintLayout>

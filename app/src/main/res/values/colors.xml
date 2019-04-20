@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGrey">#777777</color>
+    <color name="colorLigthGrey">#CAC9C9</color>
+    <color name="colorBlueTimeSchedule">#4D4DF0</color>
+    <color name="colorLightBlueTimeSchedule">#5EB4F7</color>
+    <color name="colorBlackToGray">#111111</color>
+    <color name="colorLightOrange">#F14444</color>
+</resources>

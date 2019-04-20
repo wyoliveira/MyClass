@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/table_schedule"
+    style="@style/mDefaultTableTeacher"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="14dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="14dp"
+    android:layout_marginBottom="8dp"
+    android:paddingStart="12dp"
+    android:paddingLeft="14dp"
+    android:paddingTop="10dp"
+    android:paddingRight="14dp"
+    android:paddingBottom="10dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_agroup_info_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/image_teacher"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:background="@drawable/round_circle_background_button"
+            android:text="A"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/name_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/image_teacher"
+            android:layout_toRightOf="@id/image_teacher"
+            android:text="@string/nome_da_disciplina"
+            android:textSize="@dimen/text_big"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/teacher_academic_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_teacher"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/image_teacher"
+            android:layout_toRightOf="@id/image_teacher"
+            android:text="@string/nome_do_professor" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_delete_teacher_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/ic_delete_teacher_item" />
+
+
+</RelativeLayout>
