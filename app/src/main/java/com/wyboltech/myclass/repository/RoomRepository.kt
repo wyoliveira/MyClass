@@ -3,19 +3,12 @@ package com.wyboltech.myclass.repository
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import com.google.firebase.database.*
 import com.wyboltech.myclass.constants.DataBaseConstants
 import com.wyboltech.myclass.entities.RoomEntity
-import com.google.firebase.database.DataSnapshot
 import java.lang.Exception
 
 
-class RoomRepository(context: Context) : ValueEventListener {
-    override fun onCancelled(p0: DatabaseError) {
-    }
-
-    override fun onDataChange(p0: DataSnapshot) {
-    }
+class RoomRepository(context: Context) {
 
 
     private var mScheduleDataBaseHelper: ScheduleDataBaseHelper = ScheduleDataBaseHelper(context)
@@ -54,7 +47,6 @@ class RoomRepository(context: Context) : ValueEventListener {
 
                 val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.ID))
                 val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.DESCRIPTION))
-
 
                 room = RoomEntity(id, description)
 

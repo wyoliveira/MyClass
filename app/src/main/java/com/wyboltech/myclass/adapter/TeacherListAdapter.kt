@@ -15,7 +15,7 @@ class TeacherListAdapter (val teacherList: List<TeacherEntity>, val listener: On
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeacherViewHolder {
-        val context = parent?.context
+        val context = parent.context
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.row_teacher_item_list, parent, false)
 

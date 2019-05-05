@@ -9,12 +9,14 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
+import android.widget.TextView
 import android.widget.Toast
 import com.wyboltech.myclass.R
 import com.wyboltech.myclass.adapter.ScheduleListAdapter
 import com.wyboltech.myclass.business.ScheduleBusiness
 import com.wyboltech.myclass.constants.MyClassConstants
 import com.wyboltech.myclass.entities.OnInteractionScheduleByMenuListener
+import java.util.*
 
 class ListScheduleFragment : Fragment() {
 
@@ -23,7 +25,6 @@ class ListScheduleFragment : Fragment() {
     private lateinit var mScheduleBusiness: ScheduleBusiness
     private lateinit var m2Listener: OnInteractionScheduleByMenuListener
     private var dayofweek = 0
-
 
     companion object {
         fun newInstance(weekDay: Int): ListScheduleFragment {
@@ -37,6 +38,7 @@ class ListScheduleFragment : Fragment() {
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -47,6 +49,7 @@ class ListScheduleFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
         val rootView = inflater.inflate(R.layout.fragment_list_schedule, container, false)
 
         mContext = rootView.context
@@ -90,7 +93,7 @@ class ListScheduleFragment : Fragment() {
         //1 - Obter o elemento
         mRecyclerScheduleList = rootView.findViewById(R.id.recyclerScheduleList)
         //2 - Definir um adapter com os itens da listagem
-        mRecyclerScheduleList.adapter = ScheduleListAdapter(scheduleList, m2Listener)
+        mRecyclerScheduleList.adapter = ScheduleListAdapter(scheduleList, m2Listener, dayofweek)
         //3 - Definir um layout
         mRecyclerScheduleList.layoutManager = LinearLayoutManager(mContext)
 
@@ -106,8 +109,9 @@ class ListScheduleFragment : Fragment() {
     }
 
     private fun loadSchedules() {
-        mRecyclerScheduleList.adapter = ScheduleListAdapter(mScheduleBusiness.getList(dayofweek), m2Listener)
+        mRecyclerScheduleList.adapter = ScheduleListAdapter(mScheduleBusiness.getList(dayofweek), m2Listener, dayofweek)
     }
+
 
 
 }

@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.TeacherListFragment">
+    android:paddingTop="10dp"
+    tools:context=".views.RoomListFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerTeacherList"
+        android:id="@+id/recyclerRoomList"
         android:layout_width="match_parent"
-        android:paddingTop="10dp"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="74dp"
-        tools:listitem="@layout/row_teacher_item_list"/>
+        android:paddingBottom="74dp"/>
 
 </FrameLayout>

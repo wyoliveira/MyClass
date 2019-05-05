@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -19,12 +20,14 @@ class TeacherViewHolder (itemView: View, val listener: OnInteractionItemTeacher,
     private val mTeacherEmail: TextView = itemView.findViewById(R.id.teacher_academic_email)
     private val mTeacherGroupInfo: RelativeLayout = itemView.findViewById(R.id.layout_agroup_info_teacher)
     private val mDeleteTeacherButton: ImageView = itemView.findViewById(R.id.img_delete_teacher_item)
+    private val mCircleImageTeacher: Button = itemView.findViewById(R.id.image_teacher)
 
     fun bindData(teacher: TeacherEntity) {
 
         mTeacherName.text = teacher.name
         mTeacherEmail.text = teacher.email
         mDeleteTeacherButton.setOnClickListener { showConfirmationDialog(teacher)}
+        mCircleImageTeacher.text = teacher.name.first().toString()
 
     }
 

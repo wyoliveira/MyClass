@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.wyboltech.myclass.views.ListScheduleFragment
 
-class ScreenSlidePageAdapter (fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager) {
+class ScreenSlidePageAdapterSchedules(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
 
     override fun getCount(): Int = 6
 
@@ -15,13 +15,13 @@ class ScreenSlidePageAdapter (fragmentManager: FragmentManager): FragmentStatePa
         if (position == 0) {
             return ListScheduleFragment.newInstance(1)
         }
-        if (position == 1){
+        if (position == 1) {
             return ListScheduleFragment.newInstance(2)
         }
         if (position == 2) {
             return ListScheduleFragment.newInstance(3)
         }
-        if (position == 3){
+        if (position == 3) {
             return ListScheduleFragment.newInstance(4)
         }
         if (position == 4) {

@@ -1,6 +1,7 @@
 package com.wyboltech.myclass.business
 
 import android.content.Context
+import com.wyboltech.myclass.R
 import com.wyboltech.myclass.constants.MyClassConstants
 import com.wyboltech.myclass.entities.ScheduleEntity
 import com.wyboltech.myclass.repository.ScheduleRepository
@@ -8,7 +9,7 @@ import com.wyboltech.myclass.util.SecurityPreferences
 import com.wyboltech.myclass.util.ValidationException
 import java.lang.Exception
 
-class ScheduleBusiness (context: Context) {
+class ScheduleBusiness (val context: Context) {
 
     private val mScheduleRepository: ScheduleRepository = ScheduleRepository.getInstance(context)
     private val mSecurityPreferences: SecurityPreferences = SecurityPreferences(context)
@@ -25,7 +26,7 @@ class ScheduleBusiness (context: Context) {
 
         try {
             if( scheduleEntity.dayOfWeek == 0){
-                throw ValidationException("Por favor, escolha o dia da semana")
+                throw ValidationException(context.getString(R.string.escolha_dia_semana))
             }
 
             mScheduleRepository.insert(scheduleEntity)

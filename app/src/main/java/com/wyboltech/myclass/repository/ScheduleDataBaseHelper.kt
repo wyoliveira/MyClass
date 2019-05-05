@@ -60,7 +60,6 @@ class ScheduleDataBaseHelper (context: Context): SQLiteOpenHelper (context, DATA
         db.execSQL(deleteTableRoom)
         db.execSQL(deleteTableTeacher)
 
-
         db.execSQL(createTableRoom)
         db.execSQL(createTableUser)
         db.execSQL(createTableSchedule)

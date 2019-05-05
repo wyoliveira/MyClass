@@ -111,7 +111,6 @@ class ScheduleRepository private constructor(context: Context) {
         try {
             val db = mScheduleDataBaseHelper.writableDatabase
 
-
             val insertValues = ContentValues()
             insertValues.put(DataBaseConstants.SCHEDULE.COLUMNS.USERID, pScheduleEntity.userId)
             insertValues.put(DataBaseConstants.SCHEDULE.COLUMNS.SUBJECT, pScheduleEntity.subject)

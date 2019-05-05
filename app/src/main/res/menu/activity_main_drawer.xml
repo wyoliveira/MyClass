@@ -10,13 +10,13 @@
             android:title="Meu horário" />
         <item
             android:id="@+id/nav_teacher"
-            android:icon="@drawable/ic_person_teacher"
+            android:icon="@drawable/ic_person_teacher_24dp"
             android:title="Professores" />
 
         <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="Compartilhar" />
+            android:id="@+id/nav_room"
+            android:icon="@drawable/ic_room_local_24dp"
+            android:title="Salas" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout_menu_24dp"

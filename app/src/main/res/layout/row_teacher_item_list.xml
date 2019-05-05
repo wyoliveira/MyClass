@@ -29,6 +29,7 @@
             android:layout_marginLeft="0dp"
             android:background="@drawable/round_circle_background_button"
             android:text="A"
+            android:textAllCaps="true"
             android:textAlignment="gravity"
             android:textColor="@color/colorWhite"
             android:textSize="24sp" />

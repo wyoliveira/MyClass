@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/subject_name"
         android:layout_marginTop="5dp"
-        android:text="Nome do professor" />
+        android:text="@string/nome_do_professor" />
 
     <TextView
         android:id="@+id/room_name"
@@ -49,7 +49,7 @@
             android:id="@+id/time_initial"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:text="Hora início"
+            android:text="@string/hora_inicio"
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:elevation="2dp"
@@ -62,7 +62,7 @@
             android:id="@+id/time_final"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:text="Hora final"
+            android:text="@string/hora_final"
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:elevation="2dp"

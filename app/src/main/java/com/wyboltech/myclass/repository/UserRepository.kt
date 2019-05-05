@@ -27,7 +27,6 @@ class UserRepository private constructor(context: Context) {
     fun insert(pName: String, pEmail: String, pPassword: String): Int {
         val db = mScheduleDataBaseHelper.writableDatabase
 
-
         val insertValues = ContentValues()
 
         insertValues.put(DataBaseConstants.USER.COLUMNS.NAME, pName)
