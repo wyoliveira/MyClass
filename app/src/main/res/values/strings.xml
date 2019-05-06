@@ -76,30 +76,18 @@
 
     <string name="pref_title_sync_frequency">Sync frequency</string>
     <string-array name="pref_list_duration_schedule_labels">
-        <item>30 min</item>
         <item>40 min</item>
         <item>50 min</item>
         <item>60 min</item>
         <item>100 min</item>
+        <item>120 min</item>
     </string-array>
     <string-array name="pref_list_duration_schedule_values">
-        <item>30</item>
         <item>40</item>
         <item>50</item>
         <item>60</item>
         <item>100</item>
-    </string-array>
-
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
+        <item>120</item>
     </string-array>
 
     <string-array name="multi_select_list_preference_default_value" />

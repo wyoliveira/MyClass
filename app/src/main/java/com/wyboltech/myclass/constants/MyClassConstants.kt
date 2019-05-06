@@ -16,4 +16,8 @@ class MyClassConstants {
     object WEEKDAYFILTER {
         val KEY = "WeekDayFilter"
     }
+    object SETTINGS_KEY {
+        val LIST_DURATION_SCHEDULE = "list_duration_schedule_settings"
+        val DISPLAY_DATE = "switch_display_date_description"
+    }
 }

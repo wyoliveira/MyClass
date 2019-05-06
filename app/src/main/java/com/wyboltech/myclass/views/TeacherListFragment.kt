@@ -31,6 +31,7 @@ class TeacherListFragment: Fragment() {
             val args: Bundle = Bundle()
             val fragment = TeacherListFragment()
             fragment.arguments = args
+
             return fragment
         }
     }

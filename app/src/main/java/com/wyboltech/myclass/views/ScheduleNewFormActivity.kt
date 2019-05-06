@@ -1,10 +1,12 @@
 package com.wyboltech.myclass.views
 
 import android.app.TimePickerDialog
+import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -27,6 +29,7 @@ class ScheduleNewFormActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var mRoomBusiness: RoomBusiness
     private lateinit var mScheduleBusiness: ScheduleBusiness
     private lateinit var mSecurityPreferences: SecurityPreferences
+    private lateinit var mSharedPreferences: SharedPreferences
     private var mListRoomsEntity: MutableList<RoomEntity> = mutableListOf()
     private var mListRoomsId: MutableList<Int> = mutableListOf()
     private var mDayOfWeekCode = 0
@@ -41,8 +44,11 @@ class ScheduleNewFormActivity : AppCompatActivity(), View.OnClickListener {
         mRoomBusiness = RoomBusiness(this)
         mScheduleBusiness = ScheduleBusiness(this)
         mSecurityPreferences = SecurityPreferences(this)
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         mListOfButtons = listOf(bt_radio_segunda, bt_radio_terca, bt_radio_quarta,
                 bt_radio_quinta, bt_radio_sexta, bt_radio_sabado)
+
+
         loadRooms()
         loadDataFromActivity()
         setListeners()
@@ -66,13 +72,33 @@ class ScheduleNewFormActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    fun getTimeAddictedWithPreferenceTime(hour: Int, minute: Int): String {
+        var mMin = minute
+        var mHour = hour
+        mMin += mSharedPreferences.getString(MyClassConstants.SETTINGS_KEY.LIST_DURATION_SCHEDULE, "40").toInt()
+
+        return if (mMin >= 60) {
+            while(mMin>=60){
+                mMin-= 60
+                mHour+=1
+            }
+            String.format("%02d:%02d", mHour, mMin)
+        } else {
+            String.format("%02d:%02d", mHour, mMin)
+        }
+    }
+
     private fun getOnTimeSetListener(id: Int): TimePickerDialog.OnTimeSetListener {
         return TimePickerDialog.OnTimeSetListener { timePicker: TimePicker, hour: Int, minute: Int ->
             if (Build.VERSION.SDK_INT >= 23) {
                 if (id == R.id.img_btn_initTime) {
-                    edit_select_initial_time.text = String.format("%02d:%02d", timePicker.hour, timePicker.minute)
+                    val initTimeString = String.format("%02d:%02d", timePicker.hour, timePicker.minute)
+                    val finTimeString = getTimeAddictedWithPreferenceTime(timePicker.hour, timePicker.minute)
+                    edit_select_initial_time.text = initTimeString
+                    edit_select_final_time.text = finTimeString
                 } else if (id == R.id.img_btn_finTime) {
-                    edit_select_final_time.text = String.format("%02d:%02d", timePicker.hour, timePicker.minute)
+                    val finTimeString = String.format("%02d:%02d", timePicker.hour, timePicker.minute)
+                    edit_select_final_time.text = finTimeString
                 }
                 return@OnTimeSetListener
             } else {
@@ -131,7 +157,7 @@ class ScheduleNewFormActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun getIdOfButton(index: Int): Int = mListOfButtons[index-1].id
+    private fun getIdOfButton(index: Int): Int = mListOfButtons[index - 1].id
 
     private fun loadDataFromActivity() {
         val bundle = intent.extras

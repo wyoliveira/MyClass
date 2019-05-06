@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="pref_settings_title">
+    <PreferenceCategory
+        android:title="Horários de aula">
+        <ListPreference
+            android:key="list_duration_schedule_settings"
+            android:title="Duração da aula"
+            android:icon="@drawable/ic_duration_timer_class_24dp"
+            android:entries="@array/pref_list_duration_schedule_labels"
+            android:entryValues="@array/pref_list_duration_schedule_values"
+            android:summary="Define um período de tempo fixo para uma aula ao marcar um horário novo" />
+        <SwitchPreference
+            android:key="switch_display_date_description"
+            android:title="Visualização da data"
+            android:icon="@drawable/ic_text_date_description_24dp"
+            android:summary="Para exibir data atual com dia da semana, dia do mês e mês na barra superior da aplicação"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -3,16 +3,15 @@ package com.wyboltech.myclass.views
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
 import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.view.ViewPager
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.preference.PreferenceManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.Menu
@@ -45,6 +44,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var mRoomBusiness: RoomBusiness
     private lateinit var mTeacherBusiness: TeacherBusiness
     private lateinit var mPagerAdapterSchedules: ScreenSlidePageAdapterSchedules
+    private lateinit var mSharedPreferences: SharedPreferences
     private lateinit var mPagerAdapterTeacherRoom: ScreenSlidePageAdapterTeachersRooms
     private var mTeacherId: Int = 0
     private lateinit var mPager: ViewPager
@@ -74,13 +74,14 @@ class MainActivity : AppCompatActivity(),
         mRoomBusiness = RoomBusiness(this)
         mTeacherBusiness = TeacherBusiness(this)
         mSecurityPreferences = SecurityPreferences(this)
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
         mPagerAdapterSchedules = ScreenSlidePageAdapterSchedules(supportFragmentManager)
         mPagerAdapterTeacherRoom = ScreenSlidePageAdapterTeachersRooms(supportFragmentManager)
         loadRoomDefault()
         loadCacheRooms()
         startDefaultPageAdapterSchedules()
-        getCustomDateDescription()
+        setupDateDescription()
         setupFloatButtonListeners()
     }
 
@@ -160,6 +161,7 @@ class MainActivity : AppCompatActivity(),
 
         when (item.itemId) {
             R.id.action_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
                 true
             }
             R.id.action_about -> {
@@ -267,24 +269,31 @@ class MainActivity : AppCompatActivity(),
 
     }
 
-    private fun getCustomDateDescription() {
-        val c = Calendar.getInstance()
-        val days = arrayOf("Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado")
-        val months = arrayOf("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
+    private fun setupDateDescription() {
+        if(mSharedPreferences.getBoolean(MyClassConstants.SETTINGS_KEY.DISPLAY_DATE, false)) {
+            text_week_date_description.visibility = View.VISIBLE
+            val c = Calendar.getInstance()
+            val days = arrayOf("Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado")
+            val months = arrayOf("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
 
-        if (getToday() != 6) {
-            text_week_date_description.text = "${days[getToday()]}, ${c.get(Calendar.DAY_OF_MONTH)} de ${months[c.get(Calendar.MONTH)]}"
+            if (getToday() != 6) {
+                text_week_date_description.text = "${days[getToday()]}, ${c.get(Calendar.DAY_OF_MONTH)} de ${months[c.get(Calendar.MONTH)]}"
+            } else {
+                text_week_date_description.text = "${days[0]}, ${c.get(Calendar.DAY_OF_MONTH)} de ${months[c.get(Calendar.MONTH)]}"
+            }
         } else {
-            text_week_date_description.text = "${days[0]}, ${c.get(Calendar.DAY_OF_MONTH)} de ${months[c.get(Calendar.MONTH)]}"
+            text_week_date_description.visibility = View.INVISIBLE
         }
 
     }
 
     override fun onStart() {
+        setupDateDescription()
         super.onStart()
     }
 
     override fun onResume() {
+        setupDateDescription()
         super.onResume()
     }
 

@@ -3,6 +3,7 @@ package com.wyboltech.myclass.views
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v14.preference.PreferenceFragment
 import android.view.View
 import android.widget.Toast
 import com.wyboltech.myclass.R
