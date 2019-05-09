@@ -112,6 +112,4 @@ class ListScheduleFragment : Fragment() {
         mRecyclerScheduleList.adapter = ScheduleListAdapter(mScheduleBusiness.getList(dayofweek), m2Listener, dayofweek)
     }
 
-
-
 }

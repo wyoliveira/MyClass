@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.wyboltech.myclass.constants.DataBaseConstants
 
-class ScheduleDataBaseHelper (context: Context): SQLiteOpenHelper (context, DATABASE_NAME, null, DATABASE_VERSION){
+class ScheduleDataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private val DATABASE_NAME = "myclass.db"
         private val DATABASE_VERSION = 1
@@ -31,7 +31,10 @@ class ScheduleDataBaseHelper (context: Context): SQLiteOpenHelper (context, DATA
 
     private val createTableRoom = """ CREATE TABLE ${DataBaseConstants.ROOM.TABLE_NAME} (
         ${DataBaseConstants.ROOM.COLUMNS.ID} INTEGER PRIMARY KEY  AUTOINCREMENT,
-        ${DataBaseConstants.ROOM.COLUMNS.DESCRIPTION} TEXT
+        ${DataBaseConstants.ROOM.COLUMNS.DESCRIPTION} TEXT,
+        ${DataBaseConstants.ROOM.COLUMNS.ALIAS} TEXT,
+        ${DataBaseConstants.ROOM.COLUMNS.TYPE} INTEGER,
+        ${DataBaseConstants.ROOM.COLUMNS.LEVEL} INTEGER
         );"""
 
     private val createTableTeacher = """CREATE TABLE ${DataBaseConstants.TEACHER.TABLE_NAME} (
@@ -40,6 +43,55 @@ class ScheduleDataBaseHelper (context: Context): SQLiteOpenHelper (context, DATA
         ${DataBaseConstants.TEACHER.COLUMNS.NAME} TEXT,
         ${DataBaseConstants.TEACHER.COLUMNS.EMAIL} TEXT
     );"""
+
+    private val createRoomLabsDefault = """INSERT INTO ${DataBaseConstants.ROOM.TABLE_NAME} (
+	${DataBaseConstants.ROOM.COLUMNS.DESCRIPTION},
+	${DataBaseConstants.ROOM.COLUMNS.ALIAS},
+	${DataBaseConstants.ROOM.COLUMNS.TYPE},
+	${DataBaseConstants.ROOM.COLUMNS.LEVEL}) VALUES
+('Lab de Informática I', 'LAB 1', 2, 1),
+('Lab de Informática II', 'LAB 2', 2, 3),
+('Lab de Informática III', 'LAB 3', 2, 3),
+('Lab de Informática IV', 'LAB 4', 2, 3),
+('Lab de Informática V', 'LAB 5', 2, 2),
+('Lab de Fís e Eletricidade I', 'LAB FIS ELETRIC I', 2, 2),
+('Lab de Fís e Eletricidade II', 'LAB FIS ELETRIC II', 2, 2),
+('Lab de Química Geral', 'LAB QUIM GERAL', 2, 1),
+('Lab de Física e Química', 'LAB FIS QUIM', 2, 1),
+('Lab de Inform e Redes', 'LAB INFO E REDES', 2, 3),
+('Lab de Hardware', 'LAB HARDWR', 2, 2);
+    """
+
+    private val createRoomRoomDefault = """INSERT INTO ${DataBaseConstants.ROOM.TABLE_NAME} (
+	${DataBaseConstants.ROOM.COLUMNS.DESCRIPTION},
+	${DataBaseConstants.ROOM.COLUMNS.ALIAS},
+	${DataBaseConstants.ROOM.COLUMNS.TYPE},
+	${DataBaseConstants.ROOM.COLUMNS.LEVEL}) VALUES
+('Sala 1', 'SALA 1', 1, 1),
+('Sala 2', 'SALA 2', 1, 1),
+('Sala 3', 'SALA 3', 1, 1),
+('Sala 4', 'SALA 4', 1, 1),
+('Sala 5', 'SALA 5', 1, 1),
+('Sala 6', 'SALA 6', 1, 1),
+('Sala 7', 'SALA 7', 1, 1),
+('Sala 8', 'SALA 8', 1, 1),
+('Sala 9', 'SALA 9', 1, 2),
+('Sala 10', 'SALA 10', 1, 2),
+('Sala 11', 'SALA 11', 1, 2),
+('Sala 12', 'SALA 12', 1, 2),
+('Sala 13', 'SALA 13', 1, 2),
+('Sala 14', 'SALA 14', 1, 2),
+('Sala 15', 'SALA 15', 1, 2),
+('Sala 16', 'SALA 16', 1, 2),
+('Sala 17', 'SALA 17', 1, 3),
+('Sala 18', 'SALA 18', 1, 3),
+('Sala 19', 'SALA 19', 1, 3),
+('Sala 20', 'SALA 20', 1, 3),
+('Sala 21', 'SALA 21', 1, 3),
+('Sala 22', 'SALA 22', 1, 3),
+('Sala 23', 'SALA 23', 1, 3),
+('Sala 24', 'SALA 24', 1, 3);
+"""
 
     private val deleteTableUser = "drop table if exists ${DataBaseConstants.USER.TABLE_NAME}"
     private val deleteTableSchedule = "drop table if exists ${DataBaseConstants.SCHEDULE.TABLE_NAME}"
@@ -51,6 +103,9 @@ class ScheduleDataBaseHelper (context: Context): SQLiteOpenHelper (context, DATA
         db.execSQL(createTableSchedule)
         db.execSQL(createTableRoom)
         db.execSQL(createTableTeacher)
+
+        db.execSQL(createRoomLabsDefault)
+        db.execSQL(createRoomRoomDefault)
 
     }
 
@@ -64,6 +119,8 @@ class ScheduleDataBaseHelper (context: Context): SQLiteOpenHelper (context, DATA
         db.execSQL(createTableUser)
         db.execSQL(createTableSchedule)
         db.execSQL(createTableTeacher)
+        db.execSQL(createRoomLabsDefault)
+        db.execSQL(createRoomRoomDefault)
 
     }
 }

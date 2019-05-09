@@ -18,21 +18,22 @@ class RoomBusiness (context: Context){
 
     fun delete(roomId: Int) = mRoomRepository.delete(roomId)
 
-    fun createRoomDefault(): MutableList<RoomEntity> {
+    /*fun createRoomDefault(): MutableList<RoomEntity> {
 
         var listMock = mutableListOf<RoomEntity>()
         try {
-            for (i in 1..8) {
+            for (i in 1..24) {
                 val roomMock = RoomEntity(i, "Sala $i")
                 if(mRoomRepository.get(i) != roomMock) {
                     mRoomRepository.insert(roomMock)
                     listMock.add(roomMock)
                 }
             }
+
         }catch (e: Exception){
             return listMock
         }
         return listMock
-    }
+    }*/
 
 }

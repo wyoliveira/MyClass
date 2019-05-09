@@ -72,7 +72,7 @@ class ScheduleNewFormActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    fun getTimeAddictedWithPreferenceTime(hour: Int, minute: Int): String {
+    private fun getTimeAddictedWithPreferenceTime(hour: Int, minute: Int): String {
         var mMin = minute
         var mHour = hour
         mMin += mSharedPreferences.getString(MyClassConstants.SETTINGS_KEY.LIST_DURATION_SCHEDULE, "40").toInt()
@@ -103,7 +103,10 @@ class ScheduleNewFormActivity : AppCompatActivity(), View.OnClickListener {
                 return@OnTimeSetListener
             } else {
                 if (id == R.id.img_btn_initTime) {
-                    edit_select_initial_time.text = String.format("%02d:%02d", timePicker.currentHour, timePicker.currentMinute)
+                    val initTimeString = String.format("%02d:%02d", timePicker.currentHour, timePicker.currentMinute)
+                    val finTimeString = getTimeAddictedWithPreferenceTime(timePicker.currentHour, timePicker.currentMinute)
+                    edit_select_initial_time.text = initTimeString
+                    edit_select_final_time.text = finTimeString
                 } else if (id == R.id.img_btn_finTime) {
                     edit_select_final_time.text = String.format("%02d:%02d", timePicker.currentHour, timePicker.currentMinute)
                 }

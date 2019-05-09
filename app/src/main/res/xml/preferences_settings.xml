@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="pref_settings_title">
     <PreferenceCategory
-        android:title="Horários de aula">
+        android:title="Configurações de aula">
         <ListPreference
             android:key="list_duration_schedule_settings"
             android:title="Duração da aula"

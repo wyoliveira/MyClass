@@ -31,6 +31,9 @@ class DataBaseConstants {
         object COLUMNS {
             const val ID = "id"
             const val DESCRIPTION = "description"
+            const val ALIAS = "alias"
+            const val TYPE = "type"
+            const val LEVEL = "level"
 
         }
     }

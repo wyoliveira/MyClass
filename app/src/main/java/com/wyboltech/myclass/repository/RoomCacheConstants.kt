@@ -8,7 +8,7 @@ class RoomCacheConstants private constructor(){
 
         fun setCache(list: List<RoomEntity>){
             for (item in list){
-                mRoomCache.put(item.id, item.description)
+                mRoomCache.put(item.id, item.alias.capitalize())
             }
         }
 

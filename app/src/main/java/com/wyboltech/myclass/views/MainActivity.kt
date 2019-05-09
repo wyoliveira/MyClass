@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity(),
 
         mPagerAdapterSchedules = ScreenSlidePageAdapterSchedules(supportFragmentManager)
         mPagerAdapterTeacherRoom = ScreenSlidePageAdapterTeachersRooms(supportFragmentManager)
+
         loadRoomDefault()
         loadCacheRooms()
         startDefaultPageAdapterSchedules()
@@ -114,7 +115,6 @@ class MainActivity : AppCompatActivity(),
     override fun onClick(view: View) {
         val id = view.id
         if (id == R.id.speedDialFloatButton) {
-            //startActivity(Intent(this, ScheduleNewFormActivity::class.java))
         }
     }
 

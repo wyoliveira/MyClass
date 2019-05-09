@@ -34,7 +34,10 @@ class RoomRepository(context: Context) {
             val db = mScheduleDataBaseHelper.readableDatabase
 
             val projection = arrayOf(DataBaseConstants.ROOM.COLUMNS.ID,
-                    DataBaseConstants.ROOM.COLUMNS.DESCRIPTION)
+                    DataBaseConstants.ROOM.COLUMNS.DESCRIPTION,
+                    DataBaseConstants.ROOM.COLUMNS.ALIAS,
+                    DataBaseConstants.ROOM.COLUMNS.TYPE,
+                    DataBaseConstants.ROOM.COLUMNS.LEVEL)
 
             val selection = "${DataBaseConstants.ROOM.COLUMNS.ID} = ?" //Esse é o WHERE, que faz o filtro recebendo o id como parametro
 
@@ -47,8 +50,11 @@ class RoomRepository(context: Context) {
 
                 val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.ID))
                 val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.DESCRIPTION))
+                val alias = cursor.getString(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.ALIAS))
+                val type = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.TYPE))
+                val level = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.LEVEL))
 
-                room = RoomEntity(id, description)
+                room = RoomEntity(id, description, alias, type, level)
 
             }
             cursor.close()
@@ -74,8 +80,11 @@ class RoomRepository(context: Context) {
 
                     val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.ID))
                     val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.DESCRIPTION))
+                    val alias = cursor.getString(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.ALIAS))
+                    val type = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.TYPE))
+                    val level = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.ROOM.COLUMNS.LEVEL))
 
-                    list.add(RoomEntity(id, description))
+                    list.add(RoomEntity(id, description, alias, type, level))
 
                 }
             }
@@ -94,6 +103,9 @@ class RoomRepository(context: Context) {
 
             val insertValues = ContentValues()
             insertValues.put(DataBaseConstants.ROOM.COLUMNS.DESCRIPTION, pRoomEntity.description)
+            insertValues.put(DataBaseConstants.ROOM.COLUMNS.ALIAS, pRoomEntity.alias)
+            insertValues.put(DataBaseConstants.ROOM.COLUMNS.TYPE, pRoomEntity.type)
+            insertValues.put(DataBaseConstants.ROOM.COLUMNS.LEVEL, pRoomEntity.level)
 
             db.insert(DataBaseConstants.ROOM.TABLE_NAME, null, insertValues)
 
@@ -108,6 +120,9 @@ class RoomRepository(context: Context) {
 
             val updateValues = ContentValues()
             updateValues.put(DataBaseConstants.ROOM.COLUMNS.DESCRIPTION, pRoomEntity.description)
+            updateValues.put(DataBaseConstants.ROOM.COLUMNS.ALIAS, pRoomEntity.alias)
+            updateValues.put(DataBaseConstants.ROOM.COLUMNS.TYPE, pRoomEntity.type)
+            updateValues.put(DataBaseConstants.ROOM.COLUMNS.LEVEL, pRoomEntity.level)
 
             val selection = "${DataBaseConstants.ROOM.COLUMNS.ID} = ?" //Esse é o WHERE, que faz o filtro
             val selectionArgs = arrayOf(pRoomEntity.id.toString())
